@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'form_mahasiswa.dart';
+import 'form_dosen.dart';
+import 'form_matkul.dart';
 
 void main() => runApp(const MyApp());
 
@@ -10,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Aplikasi Form Mahasiswa',
+      title: 'Aplikasi Form Akademik',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.pink),
@@ -18,6 +20,8 @@ class MyApp extends StatelessWidget {
       home: const MainWithDrawer(),
       routes: {
         '/form': (_) => const FormMahasiswaPage(),
+        '/formDosen': (_) => const FormDosenPage(),
+        '/formMatkul': (_) => const FormMatkulPage(),
         '/list': (_) => const DaftarMahasiswaPage(),
         '/tentang': (_) => const TentangAplikasiPage(),
         '/pengaturan': (_) => const PengaturanPage(),
@@ -38,7 +42,7 @@ class MainWithDrawer extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: [
             UserAccountsDrawerHeader(
-              accountName: const Text('Demo Form Mahasiswa'),
+              accountName: const Text('Demo Form Akademik'),
               accountEmail: const Text('v1.0.0'),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Theme.of(context).colorScheme.primaryContainer,
@@ -51,6 +55,22 @@ class MainWithDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/form');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.work),
+              title: const Text('Form Dosen'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/formDosen');
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.book),
+              title: const Text('Form Mata Kuliah'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, '/formMatkul');
               },
             ),
             ListTile(
@@ -98,10 +118,10 @@ class _HomeContent extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: const [
-              Icon(Icons.menu, size: 48),
+              Icon(Icons.menu_book, size: 48),
               SizedBox(height: 12),
               Text(
-                'Selamat datang di aplikasi demo form mahasiswa. '
+                'Selamat datang di aplikasi demo form akademik. '
                 'Gunakan menu di kiri atas untuk navigasi.',
               ),
             ],
@@ -143,7 +163,7 @@ class PengaturanPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Pengaturan")),
-      body: const Center(child: Text("Pengaturan Apliaksi.")),
-);
-}
+      body: const Center(child: Text("Pengaturan Aplikasi.")),
+    );
+  }
 }

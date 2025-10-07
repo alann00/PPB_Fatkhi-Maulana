@@ -10,15 +10,13 @@ class FormMahasiswaPage extends StatefulWidget {
 class _FormMahasiswaPageState extends State<FormMahasiswaPage> {
   // --- Form key & step
   final _formKey = GlobalKey<FormState>();
-  int _currentStep = 0; // hanya 1 step (index 0)
+  final int _currentStep = 0; // hanya 1 step (index 0) -> final karena tidak diubah
 
   // --- Controller & field (BAGIAN 1)
   final cNama = TextEditingController();
   final cNpm = TextEditingController();
   final cEmail = TextEditingController();
   final cAlamat = TextEditingController();
-  final cFakultas = TextEditingController();
-  final cJurusan = TextEditingController();
   DateTime? tglLahir;
   TimeOfDay? jamBimbingan;
 
@@ -35,8 +33,6 @@ class _FormMahasiswaPageState extends State<FormMahasiswaPage> {
     cNpm.dispose();
     cEmail.dispose();
     cAlamat.dispose();
-    cFakultas.dispose();
-    cJurusan.dispose();
     super.dispose();
   }
 
@@ -84,8 +80,6 @@ class _FormMahasiswaPageState extends State<FormMahasiswaPage> {
       'npm': cNpm.text.trim(),
       'email': cEmail.text.trim(),
       'alamat': cAlamat.text.trim(),
-      'fakultas': cFakultas.text.trim(),
-      'jurusan': cJurusan.text.trim(),
       'tglLahir': tglLahirLabel,
       'jamBimbingan': jamLabel,
     };
@@ -183,30 +177,6 @@ class _FormMahasiswaPageState extends State<FormMahasiswaPage> {
               validator: (v) =>
                   (v == null || v.trim().isEmpty) ? 'Alamat wajib diisi' : null,
             ),
-              const SizedBox(height: 10),
-              TextFormField(
-              controller: cFakultas,
-              decoration: const InputDecoration(
-                labelText: 'Fakultas',
-                hintText: 'cth: Ilmu Komputer',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.apartment),
-              ),
-              validator: (v) =>
-                  (v == null || v.trim().isEmpty) ? 'Fakultas wajib diisi' : null,
-            ),
-            const SizedBox(height: 10),
-            TextFormField(
-              controller: cJurusan,
-              decoration: const InputDecoration(
-                labelText: 'Jurusan',
-                hintText: 'cth: Sistem Informasi',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.school),
-              ),
-              validator: (v) =>
-                  (v == null || v.trim().isEmpty) ? 'Jurusan wajib diisi' : null,
-            ),
             const SizedBox(height: 10),
             Row(
               children: [
@@ -255,6 +225,6 @@ class _FormMahasiswaPageState extends State<FormMahasiswaPage> {
           },
         ),
      ),
-);
-}
+    );
+  }
 }
